@@ -9,13 +9,33 @@
 .fullscreen {
   width: 100vw;
   height: 100vh;
-  background: repeating-linear-gradient(
+  background-color: black;
+  background-image: repeating-linear-gradient(
     75deg,
-    black,
-    black 80px,
-    #635623 83px
+    transparent,
+    transparent 7.80em,
+    #635623 8em
+    ),
+    repeating-linear-gradient(
+    -15deg,
+    transparent,
+    transparent 7.80em,
+    #635623 8em
     );
+  background-size: 120%  120%;
+  background-position: 100%;
+  /* animation: move-bg 10s linear infinite;
+  animation-iteration-count: infinite; */
+}
+
+/* @keyframes move-bg {
+  0% {
+      background-position: 0% 0, 0 0;
   }
+  100% {
+      background-position: 0 0, 120% 120;
+  }
+} */
 
 .container {
   max-width: 500px;
