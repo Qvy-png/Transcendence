@@ -23,6 +23,11 @@ down :
 
 clean:
 	@docker compose -f ./srcs/docker-compose.yml down --remove-orphans
+	rm -rf ./srcs/requirements/frontend/dist
+	rm -rf ./srcs/requirements/frontend/package-lock.json
+	rm -rf ./srcs/requirements/frontend/node_modules
+	rm -rf ./srcs/requirements/backend/node_modules
+	rm -rf ./srcs/requirements/backend/package-lock.json
 
 fclean: clean
 	@docker volume rm srcs_front srcs_db-data srcs_back

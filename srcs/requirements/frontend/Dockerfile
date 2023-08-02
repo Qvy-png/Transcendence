@@ -10,36 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-# # Installation de npm
-# RUN apk add --no-cache npm
-
-# # COPY ./srcs /app
-# RUN mkdir /app
-
-# # RUN mkdir /app
-# WORKDIR /app
-
-# EXPOSE	3002
-
-# COPY ./tools/entrypoint.sh /entrypoint.sh
-# RUN chmod +x /entrypoint.sh
-
-# # définir le point d'entrée pour le conteneur
-# ENTRYPOINT [ "../entrypoint.sh" ]
-# # CMD		["/bin/bash", "-c", "npm install && npm start"]
-FROM    node:16.17
+FROM    node:18-alpine
 
 WORKDIR /app
 
-RUN npm install npm@9.7.1
-RUN npm install -g @angular/cli
+# RUN npm install npm@latest
+# RUN npm install -g @angular/cli
 
 EXPOSE  4200
 
-COPY ./tools/entrypoint.sh /app/entrypoint.sh
+COPY ./tools/entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
+# ENTRYPOINT [ "./entrypoint.sh" ]
 # définir le point d'entrée pour le conteneur
-ENTRYPOINT ["npm", "start"]
+# ENTRYPOINT ["npm", "start"]
 
-# CMD ["npm", "start"]
+CMD ["tail", "-f"]

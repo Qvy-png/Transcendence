@@ -59,16 +59,16 @@ volumes:
       driver_opts:
         o: bind
         type: none
-        device: "$PWD/srcs/requirements/backend"
+        device: "./requirements/backend"
   front:
       driver: local
       driver_opts:
         o: bind
         type: none
-        device: "$PWD/srcs/requirements/frontend"
+        device: "./requirements/frontend"
 networks:
   inception:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.16.238.0/24
+        - subnet: 172.16.238.0/29
