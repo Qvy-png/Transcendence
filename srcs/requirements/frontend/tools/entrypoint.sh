@@ -1,3 +1,5 @@
+#!/bin/sh
+echo "start npm"
 npm install npm
 
 npm install npm@latest

@@ -22,8 +22,8 @@ EXPOSE  4200
 COPY ./tools/entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
-# ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
 # définir le point d'entrée pour le conteneur
 # ENTRYPOINT ["npm", "start"]
 
-CMD ["tail", "-f"]
+# CMD ["tail", "-f"]
