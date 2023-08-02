@@ -20,9 +20,14 @@ npx prisma db seed
 npm i -D ts-node typescript @types/node
 # # # # Cette commande démarre l'application en mode développement, ce qui permet de recharger automatiquement l'application lors des modifications du code source
 <<<<<<< HEAD
+<<<<<<< HEAD
 echo "tail -f"
 tail -f
 # # npm run start:dev
+=======
+# tail -f
+npm run start:dev
+>>>>>>> b3c87810831d263f33020f1ff1eaf7c74178e8e5
 =======
 # tail -f
 npm run start:dev
