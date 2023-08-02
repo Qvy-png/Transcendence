@@ -1,0 +1,35 @@
+body {
+	display: flex;
+	align-content: space-between;
+	border: solid 2px;
+	height: 80%;
+}
+
+main {
+	/* border: solid 2px; */
+}
+
+aside {
+	border: solid 2px;
+	margin-right: 10%;
+}
+
+.icon {
+
+}
+
+.firends {
+
+}
+
+.grade {
+	/* padding: 10%; */
+	margin-bottom: 20%;
+	border: solid 2px;
+}
+
+.history {
+	padding: 10%;
+	margin-top: 10px;
+	border: solid 2px;
+}

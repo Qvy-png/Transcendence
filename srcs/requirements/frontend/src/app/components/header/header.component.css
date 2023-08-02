@@ -1,12 +1,23 @@
 header {
 	display: flex;
-	/* justify-content: end; */
-	/* border: solid 1px; */
-	padding: 30px;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	border: solid 1px;
+	padding: 20px;
+	align-content: center;
 }
 
-.profile {
-	cursor: pointer;
-	background-color: blue;
-	padding: 10px;
+.button-profile {
+	margin-top: auto;
+}
+
+#Friends, #Game, #Profile {
+	height: 100px;
+	margin-top: 5%;
+	padding-left: 5%;
+	font-size: xx-large;
+}
+
+.btn {
+	/* padding: 10px; */
 }

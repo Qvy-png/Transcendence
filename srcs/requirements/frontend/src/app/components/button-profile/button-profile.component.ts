@@ -12,7 +12,7 @@ export class ButtonProfileComponent {
   @Output() btnClick = new EventEmitter();
 
   goProfile() {
-    this.btnClick.emit();
+    (this.isLoggedIn) ? this.btnClick.emit(true) : this.btnClick.emit(false);
   }
 
 }

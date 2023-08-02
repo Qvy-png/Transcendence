@@ -29,15 +29,15 @@
 
 .btn {
   display: inline-block;
-  background: #000;
-  color: #fff;
+  background: brown;
+  color: #FFDE56;
   border: none;
   padding: 10px 20px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 15px;
+  /* font-size: 15px; */
   font-family: inherit;
 }
 .btn:focus {

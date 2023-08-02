@@ -1,1 +1,20 @@
-<p>profile works!</p>
+<app-header></app-header>
+<body>
+	<aside>
+		<div class="icon">
+			<h2> Icon </h2>
+		</div>
+		<div class="friends">
+			<h2> Friends </h2>
+		</div>
+	</aside>
+	<main>
+		<div class="grade">
+			<h2>Grade {{ getRank() }} </h2>
+			<span>{{ getVictories() }} : {{ getLooses() }}</span>
+		</div>
+		<div class="history">
+			<h2>History</h2>
+		</div>
+	</main>
+</body>

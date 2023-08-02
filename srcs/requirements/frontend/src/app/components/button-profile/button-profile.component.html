@@ -3,9 +3,9 @@
 	<div class="profile" (click)="goProfile()">
 		<h3>Username</h3>
 		<img src="">
-		<p>Id</p>
+		<!-- <p>Id</p> -->
 	</div>
 </ng-container>
 <ng-container *ngIf="!isLoggedIn">
-	<p>Login</p>
+	<app-button  routerLink="/login" text="Login" ></app-button>
 </ng-container>

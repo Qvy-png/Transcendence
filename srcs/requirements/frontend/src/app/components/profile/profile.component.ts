@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+	constructor() {}
+
+	rank!: number;
+
+	victory: number = 0;
+	loose: number = 0;
+
+	getRank(): number {
+		return (this.rank ? this.rank : NaN);
+	}
+
+	getVictories(): number {
+		return (this.victory);
+	}
+
+	getLooses(): number {
+		return (this.loose);
+	}
 }

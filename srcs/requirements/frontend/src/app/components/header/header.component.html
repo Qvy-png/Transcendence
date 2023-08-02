@@ -1,8 +1,25 @@
 <header>
-	<!-- <ng-template #FriendsTemplate>
-		<ng-container *ngIf="isFriend("/friends")">
-			<h3>Friends</h3>
-		</ng-container>
-	</ng-template> -->
-	<app-button-profile  ></app-button-profile>
+	<ng-container [ngSwitch]="whichRoute()">
+		<!-- Main Menu -->
+		<ng-template ngSwitchCase="1">
+			<app-button-profile routerLink="/profile" class="button-profile"></app-button-profile>
+		</ng-template>
+		<!-- Profile -->
+		<ng-template ngSwitchCase="2">
+			<!-- <app-button-profile class="button-profile"></app-button-profile> -->
+			<button text="Disconnect" class="btn"> DISCONNECT </button>
+			<app-button routerLink="/" text="PROFILE" id="Profile"></app-button>
+		</ng-template>
+		<!-- Friends -->
+		<ng-template ngSwitchCase="3">
+			<app-button-profile routerLink="/profile" class="button-profile"></app-button-profile>
+			<app-button routerLink="/" text="FRIENDS" id="Friends" ></app-button>
+		</ng-template>
+		<!-- Settings -->
+		<!-- Game -->
+		<ng-template ngSwitchCase="5">
+			<app-button-profile routerLink="/profile" class="b utton-profile"></app-button-profile>
+			<app-button routerLink="/" text="MENU" id="Game" ></app-button>
+		</ng-template>
+	</ng-container>
 </header>
