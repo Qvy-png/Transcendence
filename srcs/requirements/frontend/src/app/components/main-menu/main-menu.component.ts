@@ -13,9 +13,7 @@ export class MainMenuComponent implements OnInit {
   subscription!: Subscription;
 
   constructor(private logService: LogService) {
-    // this.isLogged = this.logService
-    // .isLogged()
-    // .subscribe( (value) => (this.isLogged = value) );
+    
   }
 
   ngOnInit(): void {}

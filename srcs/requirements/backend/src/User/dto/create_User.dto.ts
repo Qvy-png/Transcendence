@@ -14,29 +14,23 @@ import { ApiProperty } from "@nestjs/swagger";
 import {IsEmail, IsNumber, IsString }from '@nestjs/class-validator';
 import { AuthCredentialsDto } from "./AuthCredentials.dto";
 
-export class CreateUserDto extends AuthCredentialsDto{
+export class CreateUserDto{
 
-	// @ApiProperty({
-	// 	description: 'Unique ID autoincremente',
-	// })
-	// @IsNumber()
-	// readonly id : number;
+	@ApiProperty({
+		description: 'Unique Email',
+	})
+	@IsEmail()
+	readonly email : string;
 
-	// @ApiProperty({
-	// 	description: 'Unique Email',
-	// })
-	// @IsEmail()
-	// readonly email : string;
+	@ApiProperty({
+		description: 'name User',
+	})
+	@IsString()
+	readonly name? : string;
 
-	// @ApiProperty({
-	// 	description: 'name User',
-	// })
-	// @IsString()
-	// readonly name? : string;
-
-	// @ApiProperty({
-	// 	description: 'name User',
-	// })
-	// @IsString()
-	// password : string;
+	@ApiProperty({
+		description: 'name User',
+	})
+	@IsString()
+	password : string;
 }

@@ -15,11 +15,11 @@ import {IsEmail, IsNumber, IsString }from '@nestjs/class-validator';
 
 export class AuthCredentialsDto {
 
-	@ApiProperty({
-		description: 'Unique ID autoincremente',
-	})
-	@IsNumber()
-	readonly id : number;
+	// @ApiProperty({
+	// 	description: 'Unique ID autoincremente',
+	// })
+	// @IsNumber()
+	// readonly id : number;
 
 	@ApiProperty({
 		description: 'Unique Email',
@@ -27,14 +27,9 @@ export class AuthCredentialsDto {
 	@IsEmail()
 	readonly email : string;
 
-	@ApiProperty({
-		description: 'name User',
-	})
-	@IsString()
-	readonly name? : string;
 
 	@ApiProperty({
-		description: 'name User',
+		description: 'password User',
 	})
 	@IsString()
 	password : string;

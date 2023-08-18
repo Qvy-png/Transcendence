@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException, Param } from '@nestjs/common';
 import { User } from './interfaces/User.interfaces'
 import { CreateUserDto } from './dto/create_User.dto';
 import { PrismaService } from '../prisma/prisma.service';
