@@ -6,7 +6,7 @@
 /*   By: aptive <aptive@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 02:39:21 by aptive            #+#    #+#             */
-/*   Updated: 2023/06/29 03:44:59 by aptive           ###   ########.fr       */
+/*   Updated: 2023/08/03 17:35:38 by aptive           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@ import {IsEmail, IsNumber, IsString }from '@nestjs/class-validator';
 
 export class AuthCredentialsDto {
 
-	@ApiProperty({
-		description: 'Unique ID autoincremente',
-	})
-	@IsNumber()
-	readonly id : number;
+	// @ApiProperty({
+	// 	description: 'Unique ID autoincremente',
+	// })
+	// // @IsNumber()
+	// // readonly id : number;
 
 	@ApiProperty({
 		description: 'Unique Email',

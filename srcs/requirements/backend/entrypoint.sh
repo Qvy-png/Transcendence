@@ -21,6 +21,6 @@ npm i -D ts-node typescript @types/node
 # # # # Cette commande démarre l'application en mode développement, ce qui permet de recharger automatiquement l'application lors des modifications du code source
 
 echo "tail -f"
-# tail -f
-npm run start:dev
+tail -f
+# npm run start:dev
 

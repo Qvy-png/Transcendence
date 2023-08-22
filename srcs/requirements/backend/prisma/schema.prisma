@@ -24,5 +24,7 @@ model Post {
   content   String?
   published Boolean? @default(false)
   user    User?    @relation(fields: [userId], references: [id])
+  // user    User?    @relation(fields: [userIdTwo], references: [id])
+
   userId  Int?
 }
