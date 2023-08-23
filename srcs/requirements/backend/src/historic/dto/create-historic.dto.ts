@@ -6,7 +6,7 @@
 /*   By: aptive <aptive@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:16:42 by aptive            #+#    #+#             */
-/*   Updated: 2023/08/22 19:16:06 by aptive           ###   ########.fr       */
+/*   Updated: 2023/08/23 14:24:59 by aptive           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ export class CreateHistoricGameDto {
 	userId: number;
 
 	@ApiProperty({
-		description: 'opponentId User',
+		description: 'opponentName User',
 	})
-	@IsNumber()
-	opponentId: number;
+	@IsString()
+	opponentName: string;
 
 	@ApiProperty({
 		description: 'Winner',
