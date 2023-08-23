@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prisma.service.ts                                  :+:      :+:    :+:   */
+/*   historic.module.ts                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aptive <aptive@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 19:22:30 by aptive            #+#    #+#             */
-/*   Updated: 2023/08/22 16:05:41 by aptive           ###   ########.fr       */
+/*   Created: 2023/08/22 16:12:32 by aptive            #+#    #+#             */
+/*   Updated: 2023/08/22 16:12:49 by aptive           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-import { INestApplication, Injectable, OnModuleInit } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { Module } from '@nestjs/common';
+import { HistoricController } from './historic.controller';
+import { HistoricService } from './historic.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
-@Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
-  async onModuleInit() {
-    await this.$connect();
-  }
-
-  async enableShutdownHooks(app: INestApplication) {
-    this.$on('beforeExit', async () => {
-      await app.close();
-    });
-  }
-}
+@Module({
+  controllers: [HistoricController],
+  providers: [HistoricService, PrismaService]
+})
+export class HistoricModule {}

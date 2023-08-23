@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +16,7 @@ import { PageNotfoundComponent } from './components/page-notfound/page-notfound.
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ButtonProfileComponent } from './components/button-profile/button-profile.component';
+import { TokenInterceptor } from './services/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,9 +34,18 @@ import { ButtonProfileComponent } from './components/button-profile/button-profi
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

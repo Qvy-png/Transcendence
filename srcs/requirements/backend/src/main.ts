@@ -13,6 +13,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -25,6 +26,15 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('api', app, document);
+
+    // Activer CORS avec des options personnalisées
+    const corsOptions: CorsOptions = {
+      origin: true, // ou spécifiez les origines autorisées ici, par exemple ['https://example.com']
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,UPDATE',
+      preflightContinue: false,
+      optionsSuccessStatus: 204,
+    };
+    app.enableCors(corsOptions)
   
   await app.listen(3000);
 }

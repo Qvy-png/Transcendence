@@ -15,16 +15,34 @@ model User {
   email       String  @unique
   password    String
   name        String?
-  posts Post[]
+  img         String?
+  status      String?
+  games       Int?
+  wins        Int?
+  looses      Int?
+  rank        Int?
+  historicGameID Historic[]
 }
 
-model Post {
-  id        Int      @default(autoincrement()) @id
-  title     String
-  content   String?
-  published Boolean? @default(false)
-  user    User?    @relation(fields: [userId], references: [id])
-  // user    User?    @relation(fields: [userIdTwo], references: [id])
-
-  userId  Int?
+model Historic {
+  gameId          Int      @default(autoincrement()) @id
+  userId          Int // relation scalar field  (used in the `@relation` attribute above)
+  opponentId      Int
+  winner          String?
+  scorePlayerOne  Int?
+  scorePlayerTwo  Int?
+  data            String?
+  mode            String?
+  user            User?    @relation(fields: [userId], references: [id])
 }
+
+// model Post {
+//   id        Int      @default(autoincrement()) @id
+//   title     String
+//   content   String?
+//   published Boolean? @default(false)
+//   user    User?    @relation(fields: [userId], references: [id])
+//   // user    User?    @relation(fields: [userIdTwo], references: [id])
+
+//   userId  Int?
+// }

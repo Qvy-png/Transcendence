@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { LogService } from 'src/app/services/log.service';
 
 @Component({
   selector: 'app-button-profile',
@@ -7,8 +8,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonProfileComponent {
 
-  isLoggedIn: boolean = true;
+  isLoggedIn?: boolean;
 
+  constructor(private logService: LogService) {
+    this.isLoggedIn = this.logService.isLogged();
+  }
+  
   @Output() btnClick = new EventEmitter();
 
   goProfile() {

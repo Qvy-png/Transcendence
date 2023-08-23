@@ -8,15 +8,19 @@ import { PlayComponent } from './components/play/play.component';
 import { PageNotfoundComponent } from './components/page-notfound/page-notfound.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: MainMenuComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'play', component: PlayComponent},
-  {path: 'friends', component: FriendsComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: '**', component: PageNotfoundComponent}
+  {path: '', canActivate: [AuthGuard], children: [
+    {path: '', redirectTo: 'main', pathMatch: 'full'},
+    {path: 'main', component: MainMenuComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'play', component: PlayComponent},
+    {path: 'friends', component: FriendsComponent},
+    {path: 'settings', component: SettingsComponent},
+    {path: '**', component: PageNotfoundComponent}
+  ]},
 ];
 
 @NgModule({
