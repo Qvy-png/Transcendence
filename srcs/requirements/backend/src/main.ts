@@ -14,6 +14,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
+import { LoggingInterceptor } from './loggin/loggin.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -35,7 +36,8 @@ async function bootstrap() {
       optionsSuccessStatus: 204,
     };
     app.enableCors(corsOptions)
-  
+    app.useGlobalInterceptors(new LoggingInterceptor());
+
   await app.listen(3000);
 }
 bootstrap();

@@ -3,7 +3,8 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { UserLog } from '../User';
+import { UserLog, Info } from '../User';
+import { UserInfoService } from './user-info.service';
 
 const httpOption = {
   headers: new HttpHeaders({
@@ -23,13 +24,13 @@ export class LogService {
   private apiUrl = 'http://localhost:3000/User';
   private signUpUrl = 'sign-up';
   private signInUrl = 'sign-in';
-
+  private curUser = 'auth/me';
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  toggleConnection(user: UserLog): Observable<string> {
+  toggleConnection(user: UserLog): Observable<any> {
     let loginInfo = { email: user.email, password: user.password}
-    return this.http.post<string>(`${this.apiUrl}/${this.signInUrl}`, JSON.stringify(loginInfo), httpOption);
+    return this.http.post<any>(`${this.apiUrl}/${this.signInUrl}`, JSON.stringify(loginInfo), httpOption);
   }
 
   logout(id: number) {
@@ -46,6 +47,17 @@ export class LogService {
 
   setAuth(auth: boolean) {
     this.auth = auth;
+  }
+
+  getUser(auth_token: string): Observable<Info> {
+    console.log(`auth: ${auth_token}`);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    
+    const httpOption = { headers: headers };
+    return this.http.get<Info>(`${this.apiUrl}/${this.curUser}`, httpOption);
   }
 
   getUsers(): Observable<UserLog[]> {
