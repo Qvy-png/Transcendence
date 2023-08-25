@@ -7,7 +7,7 @@
 		<!-- Profile -->
 		<ng-template ngSwitchCase="2">
 			<!-- <app-button-profile class="button-profile"></app-button-profile> -->
-			<button text="Disconnect" class="btn"> DISCONNECT </button>
+			<button text="Disconnect" class="btn" (click)="disconnect()" > DISCONNECT </button>
 			<app-button routerLink="/" text="PROFILE" id="Profile"></app-button>
 		</ng-template>
 		<!-- Friends -->

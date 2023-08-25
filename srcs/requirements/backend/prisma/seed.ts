@@ -6,7 +6,7 @@
 /*   By: aptive <aptive@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 03:39:33 by aptive            #+#    #+#             */
-/*   Updated: 2023/06/29 03:39:34 by aptive           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:19:15 by aptive           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ async function main() {
 		email: 'alice@prisma.io',
 		name: 'Alice',
 		password: String(hash('pass1', 10)),
-		posts: {
-			create: {
-			title: 'Check out Prisma with Next.js',
-			content: 'https://www.prisma.io/nextjs',
-			published: true,
-			},
-		},
+		// posts: {
+		// 	create: {
+		// 	title: 'Check out Prisma with Next.js',
+		// 	content: 'https://www.prisma.io/nextjs',
+		// 	published: true,
+		// 	},
+		// },
 	},
 	})
 	const bob = await prisma.user.upsert({
@@ -38,20 +38,20 @@ async function main() {
 			email: 'bob@prisma.io',
 			name: 'Bob',
 			password: String(hash('pass1', 10)),
-			posts: {
-				create: [
-					{
-						title: 'Follow Prisma on Twitter',
-						content: 'https://twitter.com/prisma',
-						published: true,
-					},
-					{
-						title: 'Follow Nexus on Twitter',
-						content: 'https://twitter.com/nexusgql',
-						published: true,
-					},
-				],
-			},
+			// posts: {
+			// 	create: [
+			// 		{
+			// 			title: 'Follow Prisma on Twitter',
+			// 			content: 'https://twitter.com/prisma',
+			// 			published: true,
+			// 		},
+			// 		{
+			// 			title: 'Follow Nexus on Twitter',
+			// 			content: 'https://twitter.com/nexusgql',
+			// 			published: true,
+			// 		},
+			// 	],
+			// },
 		},
 	})
 	console.log({ alice, bob })

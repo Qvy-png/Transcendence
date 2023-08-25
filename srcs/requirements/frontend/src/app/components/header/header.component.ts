@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LogService } from 'src/app/services/log.service';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
   selector: 'app-header',
@@ -9,28 +11,32 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private logService: LogService, private uInfoService: UserInfoService) {
+  }
 
   whichRoute(): number {
+    // console.log(this.router.url);
     switch(this.router.url) {
-      case '/': // Main Menu
-          console.log("salut");
+      case '/main': // Main Menu
           return (1);
-          break;
       case '/profile': // Profile Menu
           return (2);
-          break;
       case '/friends': // Friends Menu
           return (3);
-          break;
       case '/settings': // Settings Menu
           return (4);
-          break;
       case '/play': // Game Menu
           return (5);
-          break;
     }
     return (0);
+  }
+
+
+
+  disconnect() {
+    let id = 7;
+    this.logService.logout(id);
+    this.router.navigate(['login']);
   }
 
 }

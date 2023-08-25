@@ -18,6 +18,7 @@ import { AuthCredentialsDto } from './dto/AuthCredentials.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { CurrentUser } from './current-user.decorator';
+import { UpdateUserDto } from './dto/update_User.dto';
 
 
 // localhost:3000/User
@@ -34,6 +35,13 @@ export class UserController {
 	@Get()
 	findALL() {
 		return this.UserServices.findALL();
+	}
+
+	@Get(':name')
+	async findByName(@Param('name') name: string)
+	{
+		console.log('findByName', name);
+		return this.UserServices.findByName(name);
 	}
 
 	@Post()
@@ -65,7 +73,7 @@ export class UserController {
 
 	@ApiBearerAuth()
 	@UseGuards(JwtAuthGuard)
-	@Get('/me')
+	@Get('/auth/me')
 	getMyProfile(@CurrentUser() user : any ) {
 		console.log(user);
 		return this.UserServices.getMyProfile(user);
@@ -73,7 +81,15 @@ export class UserController {
 
 	@ApiBearerAuth()
 	@UseGuards(JwtAuthGuard)
-	@Delete('/me')
+	@Patch('/auth/me')
+	UpdateMyProfile(@CurrentUser() user : any , @Body() UpdateUserDto: UpdateUserDto) {
+		// console.log(user);
+		return this.UserServices.UpdateMyProfile(user, UpdateUserDto);
+	}
+
+	@ApiBearerAuth()
+	@UseGuards(JwtAuthGuard)
+	@Delete('/auth/me')
 	deleteMyAccount(@CurrentUser() user : any ) {
 		console.log(user);
 		return this.UserServices.deleteMyAccout(user);
