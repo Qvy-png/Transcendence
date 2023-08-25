@@ -13,7 +13,7 @@ import { UserLog } from 'src/app/User';
 })
 export class LoginPageComponent {
 
-	constructor(private logService: LogService, private cookieService: CookieService, private router: Router, private userInfoService: UserInfoService) {
+	constructor(private logService: LogService, private cookieService: CookieService, private router: Router, private uInfoService: UserInfoService) {
 		if (this.logService.isLogged()) {
 			this.router.navigate(['/main']);
 		} else {
@@ -57,15 +57,15 @@ export class LoginPageComponent {
 		// Appel du service pour verifier la connection
 		this.logService.toggleConnection(user).subscribe(
 			(value) => {
-				const token = value;
-				// console.log(token);
+				const token = JSON.stringify(value);
+				console.log('value: ' + `${token}`);
 				
 				//Ajout du Token dans le cookie pour de prochainnes connections
-				this.cookieService.set('id_token', token);
+				this.uInfoService.setToken(token);
 
-				//email est ajoutee
-				this.userInfoService.setEmail(user.email);
-		
+				this.uInfoService.setUser();
+
+
 				//Route to main page
 				this.router.navigate(['/']);
 				this.logService.setAuth(true);

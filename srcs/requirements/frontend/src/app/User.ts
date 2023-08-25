@@ -34,3 +34,29 @@ export interface User {
     email: string;
     img?: string;
 }
+
+export interface Info {
+    id:             number;
+    email:          string;
+    password:       string;
+    name:           string;
+    img:            string;
+    status:         string;
+    games:          number;
+    wins:           number;
+    looses:         number;
+    rank:           number;
+    historicGameID: number[];
+  }
+  
+//   model Historic {
+//     gameId          Int      @default(autoincrement()) @id
+//     userId          Int // relation scalar field  (used in the `@relation` attribute above)
+//     opponentName    String?
+//     winner          String?
+//     scorePlayerOne  Int?
+//     scorePlayerTwo  Int?
+//     data            String?
+//     mode            String?
+//     user            User?    @relation(fields: [userId], references: [id])
+//   }

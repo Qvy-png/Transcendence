@@ -12,7 +12,6 @@ export class HeaderComponent {
   
 
   constructor(private router: Router, private logService: LogService, private uInfoService: UserInfoService) {
-    this.uInfoService.getUser();
   }
 
   whichRoute(): number {
