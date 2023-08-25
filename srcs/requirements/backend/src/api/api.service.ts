@@ -52,7 +52,7 @@ export class ApiService {
     const requestData = new URLSearchParams();
     requestData.append('grant_type', 'authorization_code');
     requestData.append('client_id', 'u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b');
-    requestData.append('client_id', 'u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b');
+    requestData.append('client_id', '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');
     requestData.append('code', code);
     requestData.append('redirect_uri', 'https://myawesomeweb.site/callback');
 
