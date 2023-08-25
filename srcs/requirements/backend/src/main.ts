@@ -13,6 +13,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ApiService } from './api/api.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -25,7 +26,21 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('api', app, document);
-  
+
+  try {
+    const data = await ApiService.fetchDataFromExternalApi();
+    console.log('Data from external API:', data);
+
+    const data1 = await ApiService.getAccessToken()
+    console.log('Return API code:', data1);
+
+    const data2 = await ApiService.exchangeAuthorizationCodeForToken(data1);
+    console.log('Return API accessToken:', data2);
+
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
   await app.listen(3000);
 }
 bootstrap();
