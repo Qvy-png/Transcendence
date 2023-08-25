@@ -16,9 +16,10 @@ import { AppService } from './app.service';
 import { UserModule } from './User/User.module';
 import { PrismaService } from './prisma/prisma.service';
 import { HistoricModule } from './historic/historic.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
-  imports: [UserModule, HistoricModule],
+  imports: [UserModule, HistoricModule, ApiModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
