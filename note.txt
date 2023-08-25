@@ -93,3 +93,22 @@ curl -X PATCH -H "Content-Type: application/json" -d '{"email": "test@gmail.com"
 //curl delete --------------------------------------------------------
 curl -X DELETE -H  -d http://localhost:3000/User/4
 
+
+
+curl -F grant_type=authorization_code \
+-F client_id= u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b \
+-F client_secret=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 \
+-F code=af9bcf8700c7521d3d97d59f78168b052396b65645f152d85c1965b2d6e02732 \
+-F redirect_uri=http://localhost:4200 \
+-X POST https://api.intra.42.fr/oauth/token
+
+curl -F grant_type=authorization_code\
+-F client_id=u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b \
+-F client_secret=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 \
+-F code=af9bcf8700c7521d3d97d59f78168b052396b65645f152d85c1965b2d6e02732 \
+-F redirect_uri=http%3A%2F%2Flocalhost%3A4200 \
+-X POST https://api.intra.42.fr/oauth/token
+
+
+client_id=u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b
+client_secret=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`;

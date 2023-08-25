@@ -1,6 +1,7 @@
 #!/bin/sh
 # echo test
 # # installe toutes les dépendances définies dans le fichier package.json de l'application
+echo "install npm"
 npm install npm
 # apk add npm
 
