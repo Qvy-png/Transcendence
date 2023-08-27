@@ -6,7 +6,7 @@
 /*   By: aptive <aptive@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:45:43 by aptive            #+#    #+#             */
-/*   Updated: 2023/06/29 01:02:17 by aptive           ###   ########.fr       */
+/*   Updated: 2023/08/25 15:46:57 by aptive           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,37 @@ async function bootstrap() {
 
   SwaggerModule.setup('api', app, document);
 
-  try {
-    const data = await ApiService.fetchDataFromExternalApi();
-    console.log('Data from external API:', data);
-
-    const data1 = await ApiService.getAccessToken()
-    console.log('Return API code:', data1);
-
-    const data2 = await ApiService.exchangeAuthorizationCodeForToken(data1);
-    console.log('Return API accessToken:', data2);
-
-
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-    // Activer CORS avec des options personnalisées
-    const corsOptions: CorsOptions = {
-      origin: true, // ou spécifiez les origines autorisées ici, par exemple ['https://example.com']
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,UPDATE',
+  // Activer CORS avec des options personnalisées
+  const corsOptions: CorsOptions = {
+    origin: true, // ou spécifiez les origines autorisées ici, par exemple ['https://example.com']
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,UPDATE',
       preflightContinue: false,
       optionsSuccessStatus: 204,
     };
     app.enableCors(corsOptions)
     app.useGlobalInterceptors(new LoggingInterceptor());
 
-  await app.listen(3000);
-}
+    await app.listen(3000);
+
+    // test pour api42 ------------------------------------------------------------------------------------------
+    try {
+      // const data = await ApiService.fetchDataFromExternalApi();
+      // console.log('--------------- Data from external API fetchDataFromExternalApi -----------------')
+      // console.log(data);
+      // console.log('\n\n');
+      // console.log('--------------- API code getAccessToken -----------------')
+      // const data1 = await ApiService.sendAuthorizationRequest()
+      // console.log(data1);
+      // console.log('\n\n');
+      // console.log('--------------- API accessToken exchangeAuthorizationCodeForToken -----------------')
+      // const data2 = await ApiService.exchangeAuthorizationCodeForToken(data1);
+      // console.log(data2);
+
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+
 bootstrap();
