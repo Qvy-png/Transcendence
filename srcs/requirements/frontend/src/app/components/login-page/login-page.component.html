@@ -1,6 +1,16 @@
 <!-- <app-header></app-header> -->
-<button (click)="deleteCookies()">Delete</button>
+<button (click)="deleteCookies()">Delete</button> <br>
+
+
 <main>
+	<a href="{{ link }}">
+		<button class="connect btn" (click)="to_42Login()">
+			Sign in with
+			<img src="assets/42_Logo.svg">
+		</button>
+	</a>
+
+	
 	<div *ngIf="!signUp; else signUpTemplate">
 		<form (ngSubmit)="onSubmit()" class="login" >
 			<h1>Login</h1>

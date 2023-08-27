@@ -3,8 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { UserLog, Info } from '../User';
-import { UserInfoService } from './user-info.service';
+import { UserLog, Info, Infos } from '../User';
 
 const httpOption = {
   headers: new HttpHeaders({
@@ -50,7 +49,7 @@ export class LogService {
   }
 
   getUser(auth_token: string): Observable<Info> {
-    console.log(`auth: ${auth_token}`);
+    // console.log(`auth: ${auth_token}`);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
@@ -58,6 +57,10 @@ export class LogService {
     
     const httpOption = { headers: headers };
     return this.http.get<Info>(`${this.apiUrl}/${this.curUser}`, httpOption);
+  }
+
+  getUserByName(name: string): Observable<Infos> {
+    return this.http.get<Infos>(`${this.apiUrl}/${name}`);
   }
 
   getUsers(): Observable<UserLog[]> {

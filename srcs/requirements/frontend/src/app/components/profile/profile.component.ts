@@ -1,28 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
-	constructor() {}
+	constructor(private uInfoService: UserInfoService) {}
 
 	rank!: number;
 
-	victory: number = 0;
-	loose: number = 0;
+	wins: number = 0;
+	looses: number = 0;
 
 	getRank(): number {
 		return (this.rank ? this.rank : NaN);
 	}
 
-	getVictories(): number {
-		return (this.victory);
+	getWins(): number {
+		return (this.wins);
 	}
 
 	getLooses(): number {
-		return (this.loose);
+		return (this.looses);
+	}
+
+	ngOnInit(): void {
+		this.uInfoService.uInfo$.subscribe( (uInfo) => {
+			this.rank = uInfo.rank;
+			this.wins = uInfo.wins;
+			this.looses = uInfo.looses;
+		} );
 	}
 }
