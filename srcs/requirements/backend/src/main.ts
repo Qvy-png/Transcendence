@@ -29,10 +29,10 @@ async function bootstrap() {
 
   SwaggerModule.setup('api', app, document);
 
-  // Activer CORS avec des options personnalisées
-  const corsOptions: CorsOptions = {
-    origin: true, // ou spécifiez les origines autorisées ici, par exemple ['https://example.com']
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,UPDATE',
+    // Activer CORS avec des options personnalisées
+    const corsOptions: CorsOptions = {
+      origin: true, // ou spécifiez les origines autorisées ici, par exemple ['https://example.com']
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,UPDATE',
       preflightContinue: false,
       optionsSuccessStatus: 204,
     };
@@ -43,9 +43,9 @@ async function bootstrap() {
 
     // test pour api42 ------------------------------------------------------------------------------------------
     try {
-      // const data = await ApiService.fetchDataFromExternalApi();
-      // console.log('--------------- Data from external API fetchDataFromExternalApi -----------------')
-      // console.log(data);
+      const data = await ApiService.fetchDataFromExternalApi();
+      console.log('--------------- Data from external API fetchDataFromExternalApi -----------------')
+      console.log(data);
       // console.log('\n\n');
       // console.log('--------------- API code getAccessToken -----------------')
       // const data1 = await ApiService.sendAuthorizationRequest()

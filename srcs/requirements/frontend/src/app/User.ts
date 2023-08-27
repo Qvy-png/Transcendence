@@ -1,4 +1,4 @@
-type status = 'ONLINE' | 'OFFLINE';
+export type status = 'ONLINE' | 'OFFLINE';
 
 export interface UserLog {
     id?: number;
@@ -14,7 +14,7 @@ export interface UserInfo {
     looses: number;
     img: string;
     status: status;
-    history: historic[];
+    history: number[];
 }
 
 export interface historic {
@@ -36,19 +36,48 @@ export interface User {
 }
 
 export interface Info {
+    profile: {
+        id:             number;
+        email:          string;
+        password:       string;
+        name:           string;
+        img:            string;
+        status:         status;
+        games:          number;
+        wins:           number;
+        looses:         number;
+        rank:           number;
+        // historicGameID: number[];
+    }
+  }
+
+export interface Infos {
     id:             number;
     email:          string;
     password:       string;
     name:           string;
     img:            string;
-    status:         string;
+    status:         status;
     games:          number;
     wins:           number;
     looses:         number;
     rank:           number;
-    historicGameID: number[];
-  }
-  
+}
+
+// {
+// "profile": {
+//     "id": 3,
+//     "email": "t@t.fr",
+//     "name": "chams",
+//     "img": null,
+//     "status": null,
+//     "games": null,
+//     "wins": null,
+//     "looses": null,
+//     "rank": null
+// }
+// }
+
 //   model Historic {
 //     gameId          Int      @default(autoincrement()) @id
 //     userId          Int // relation scalar field  (used in the `@relation` attribute above)

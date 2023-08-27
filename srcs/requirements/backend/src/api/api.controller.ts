@@ -20,11 +20,11 @@ export class ApiController {
 
 
     @Get('callback')
-    @Redirect('/redirect-path-after-auth', 302) // Remplace par le chemin de redirection souhaité
+    @Redirect('/api42/redirect-path-after-auth', 302) // Remplace par le chemin de redirection souhaité
     async handleAuthorizationCallback(@Query('code') code: string) {
       // Échange le code temporaire contre un access token
-      // await this.ApiService.exchangeAuthorizationCodeForToken(code);
       console.log('code : ', code);
+      // await this.ApiService.exchangeAuthorizationCodeForToken(code);
 
       try {
         const accessTokenResponse = await this.ApiService.exchangeAuthorizationCodeForToken(code);

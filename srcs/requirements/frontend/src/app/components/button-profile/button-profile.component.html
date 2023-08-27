@@ -1,9 +1,12 @@
 
 <ng-container *ngIf="isLoggedIn">
 	<div class="profile" (click)="goProfile()">
-		<h3>Username</h3>
-		<img src="">
-		<!-- <p>Id</p> -->
+		<div class="left">
+			<h3>{{ username }}</h3>
+			<p> {{ id }} </p>
+		</div>
+		<!-- <img src=""> -->
+		<p>img</p>
 	</div>
 </ng-container>
 <ng-container *ngIf="!isLoggedIn">

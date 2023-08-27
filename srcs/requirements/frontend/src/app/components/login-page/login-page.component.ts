@@ -12,7 +12,14 @@ import { UserLog } from 'src/app/User';
 	styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-
+	private apiUrl = 'https://api.intra.42.fr/oauth/authorize';
+	private clientIdServ = '?client_id=u-s4t2ud-2c044f5e3d78865bec2a409a277aea2aafbbdc9b4452a820f1d3db8b06e8f80a';
+	private redirect = '&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi42%2Fcallback';
+	private response = '&response_type=code';
+	private scope = '&scope=public';
+	link = `${this.apiUrl}${this.clientIdServ}${this.redirect}${this.response}${this.scope}`;
+	
+	
 	constructor(private logService: LogService, private cookieService: CookieService, private router: Router, private uInfoService: UserInfoService) {
 		if (this.logService.isLogged()) {
 			this.router.navigate(['/main']);
@@ -47,6 +54,10 @@ export class LoginPageComponent {
 		this.password = '';
 	}
 
+	to_42Login() {
+
+	}
+
 	onSubmit() {
 		const user: UserLog = {
 			name: this.name,
@@ -58,7 +69,7 @@ export class LoginPageComponent {
 		this.logService.toggleConnection(user).subscribe(
 			(value) => {
 				const token = JSON.stringify(value);
-				console.log('value: ' + `${token}`);
+				// console.log('value: ' + `${token}`);
 				
 				//Ajout du Token dans le cookie pour de prochainnes connections
 				this.uInfoService.setToken(token);
@@ -109,6 +120,8 @@ export class LoginPageComponent {
 
 		this.logService.addUser(newUser).subscribe( (user) => {
 			
+			this.uInfoService.setUserByName(newUser.name);
+
 			this.router.navigate(['/']);
 			this.logService.setAuth(true);
 		},

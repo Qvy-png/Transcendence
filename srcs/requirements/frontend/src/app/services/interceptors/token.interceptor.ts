@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const myObject = {
       token: this.uInfoService.getToken()
     };
-    console.log(myObject.token[1]);
+    // console.log(myObject.token[1]);
     let auth_token =  JSON.stringify(myObject.token.substring(10 , myObject.token.length - 2));
     auth_token = auth_token.substring(1,auth_token.length-1);
     
