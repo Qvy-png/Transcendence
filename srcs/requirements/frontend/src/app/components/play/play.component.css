@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  font-family: 'Press Start 2P', cursive;
+  color: #ffde56;
+  overflow: hidden;
+}
+
+.GAME {
+  max-width: 800px;
+  max-height: 600px;
+  margin: auto; 
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  border: 3px solid #ffde56;
+}
+
+.quit {
+  size: larger;
+}

@@ -1,0 +1,47 @@
+.ranker {
+    cursor: pointer;
+    /* background-color:#00040D; */
+    background: rgba(3, 0, 15, 0.8);
+    border: 2px solid;
+    border-radius: 31px;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: auto;
+    align-items: center;
+    margin: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.ranker:hover {
+    background: rgba(13, 11, 22, 0.7);
+}
+
+img {
+    border-radius: 50%;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    margin: 10px 8%;
+    width: 80%;
+    /* gap: 2; */
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#col1 {
+    margin-left: 30%;
+}
+
+#col2 {
+    margin-right: 5%;
+}

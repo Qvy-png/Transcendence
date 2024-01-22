@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+
+  nest:
+    container_name: backend
+    build:
+      context: requirements/backend
+      dockerfile: Dockerfile
+    volumes:
+      - back:/app
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
+      - 5555:5555
+    env_file: .env
+    networks:
+      - inception
+    depends_on:
+      - postgresql
+
+  front:
+    container_name: front
+    build:
+      context: requirements/frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - front:/app
+    networks:
+      - inception
+    env_file: .env
+    depends_on:
+      - nest
+
+  postgresql:
+    image: postgres:latest
+    container_name: postgredb
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - inception
+    env_file: .env
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - inception
+    env_file: .env
+
+volumes:
+  db-data:
+  back:
+      driver: local
+      driver_opts:
+        o: bind
+        type: none
+        device: "./requirements/backend"
+  front:
+      driver: local
+      driver_opts:
+        o: bind
+        type: none
+        device: "./requirements/frontend"
+networks:
+  inception:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.238.0/29

@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="isLoggedIn">
+	<div class="profile" title="Your Profile" (click)="goProfile()">
+		<div class="left">
+			<h3>{{ username }}</h3>
+			<p> {{ id }} </p>
+		</div>
+		<img [src]="imageSrc" onerror="this.src='./assets/trace.svg'" width="45" height="40">
+	</div>
+</ng-container>
+<ng-container *ngIf="!isLoggedIn">
+	<app-button  routerLink="/login" text="Login" ></app-button>
+</ng-container>

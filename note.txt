@@ -1,0 +1,146 @@
+Mettre a jour npm et yarn IMPERATIVEMENT avec:
+	- curl -s https://deb.nodesource.com/setup_18.x | sudo bash (Permet de preciser la bonne version d'installation de nodejs)
+	- sudo apt-get install -y nodejs (npm a besoin de nodejs pour fonctionner)
+	- sudo apt-get install -y npm
+	- sudo npm install -g npm@latest
+	- sudo npm install -g yarn@latest
+
+
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
++                                                                     LAUNCH DOCKER                                                            +
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
+
+1. make all
+
+2. une fois les dockers lancer verfier avec | docker logs backend | si l'initialisation de la DB est ok
+	2.a. si Ok continuer
+	1.b. si non aller dans le docker postgres avec "make execDB" | faire cat "etc/hosts" et recupere la derniere adresse IP et la coller dans
+		le d.env dans POSTGRES_HOST
+
+3. relancer le make all
+
+4. verifier les logs si connexion base de donne ok etape 5, sinon  ouvrir le docker backend avec "make execBack" | puis lancer
+	"npx prisma db push && npx prisma generate && npx prisma db seed" | operation valable si vous voulez regenerer une nouvelle DB
+
+5. ouvrir le docker backend et lancer nest avec : npm run start:dev, le server se lance sans probleme
+
+Pour info :
+	- Pour se connexter a l'adminer : localhost:8080 avec les infos du .env (server name: IP/Port)
+	- Pour tester les requests :	- utilisation de curl en ligne de commande
+									- utilisation de swagger sur localhost:3000/api
+									- utlisation de l'extention vscode ThunderClient (obligatoire pour la requete du token /User/me)
+
+
+Ps: le probleme de la connexion est du a une adresse ip variable au lancement de docker ( A CORRIGER)
+
+
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
++                                                                   COMMANDE POSTGRES                                                          +
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
+connexion a postgre dans le container :
+psql mydatabase -U myuser
+
+lister les bases de données :
+\l
+
+connecter à une base de données :
+\c [Database]
+
+lister les tables
+\dt
+
+QUITTER :
+\q
+
+Pour voir les utilisateurs créés:
+\du
+
+
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
++                                                                   COMMANDE NEST                                                              +
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
+
+Generer un nouveau module
+$ nest generate module [NAME_MODULE]
+
+Generer un nouveau controler
+$  nest g co [NAME_CONTROLLER]
+
+Generer un nouveau Service
+nest g s [NAME_SERVICE]
+
+Generer un nouveau resource
+$ nest generate resource [name of ressource]
+
+
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
++                                                                   COMMANDE CURL                                                              +
++ ---------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+//CurlFindAll --------------------------------------------------------
+curl http://localhost:3000/User
+
+//CurlFindById -------------------------------------------------------
+curl http://localhost:3000/User/{userId}
+
+// Curl Post ---------------------------------------------------------
+curl -X POST -H "Content-Type: application/json" -d '{"email": "test@gmail.com", "name": "aptive"  }' http://localhost:3000/User
+
+// Curl patch/update -------------------------------------------------
+curl -X PATCH -H "Content-Type: application/json" -d '{"email": "test@gmail.com", "name": "aptive1515"  }' http://localhost:3000/User/{userId}
+
+//curl delete --------------------------------------------------------
+curl -X DELETE -H  -d http://localhost:3000/User/4
+
+
+
+curl -F grant_type=authorization_code \
+-F client_id= u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b \
+-F client_secret=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 \
+-F code=af9bcf8700c7521d3d97d59f78168b052396b65645f152d85c1965b2d6e02732 \
+-F redirect_uri=http://localhost:4200 \
+-X POST https://api.intra.42.fr/oauth/token
+
+curl -F grant_type=authorization_code\
+-F client_id=u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b \
+-F client_secret=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 \
+-F code=e7f0ac3a98b558b90b61ed56249c4513bd72f28aeb6496f31568aaa9482aada0 \
+-F redirect_uri=http://localhost:4200/api42/callback \
+-X POST https://api.intra.42.fr/oauth/token
+
+
+https://api.intra.42.fr/oauth/authorize?client_id=your_very_long_client_id&redirect_uri=http%3A%2F%2Flocalhost%3A1919%2Fusers%2Fauth%2Fft%2Fcallback&response_type=code&scope=public'
+https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-ee40ae9256c9e88990064bbb544ec0df2b7c25634f6ebfd0bd7be28783bc026b&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi42%2Fcallback&response_type=code&response_type=code&scope=public
+
+
+
+
+
+
+api tibo:
+uid: u-s4t2ud-2c044f5e3d78865bec2a409a277aea2aafbbdc9b4452a820f1d3db8b06e8f80a
+screwt id : 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
+
+
+grant_type=authorization_code
+&client_id=u-s4t2ud-2c044f5e3d78865bec2a409a277aea2aafbbdc9b4452a820f1d3db8b06e8f80a
+&client_secret=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
+&code=ea6b854c838939d8b77f292542f28fe1f11f387f35b984e0f5b9992b00e18270
+&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi42%2Fredirect-path-after-auth'
+
+
+curl -F grant_type=authorization_code \
+-F client_id=u-s4t2ud-2c044f5e3d78865bec2a409a277aea2aafbbdc9b4452a820f1d3db8b06e8f80a \
+-F client_secret=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 \
+-F code=0caa1bb4920c1f05172ac6bad0c2fc5c23cb92699352cae7d2d8383f059b8c5b \
+-F redirect_uri=http://localhost:3000/api42/redirect-path-after-auth \
+-X POST https://api.intra.42.fr/oauth/token
+
+
+accesstoken : aaa63e452f2b3798143ec9bb2912c522d27c5f5682b2c7596941691938c65bb3
+
+curl -H "Authorization: Bearer aaa63e452f2b3798143ec9bb2912c522d27c5f5682b2c7596941691938c65bb3" https://api.intra.42.fr/oauth/token/info
+
+
+curl -H "Authorization: Bearer 9ce2f5b364d4cc1d7cf3151bbf747b5372744ca0a7135355c6b3ae8c98862208" https://api.intra.42.fr/v2/me

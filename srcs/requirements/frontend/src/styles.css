@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+*:not(fa-icon){
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P';font-size: 20px; color: #FFDE56;
+}
+
+
+html{
+  height: 100%;
+}
+
+.fullscreen {
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  background-image: repeating-linear-gradient(
+    75deg,
+    transparent,
+    transparent 7.80em,
+    #635623 8em
+    ),
+    repeating-linear-gradient(
+    -15deg,
+    transparent,
+    transparent 7.80em,
+    #635623 8em
+    );
+  background-size: 120%  120%;
+  background-position: 100%;
+  /* animation: move-bg 10s linear infinite;
+  animation-iteration-count: infinite; */
+}
+
+/* @keyframes move-bg {
+  0% {
+      background-position: 0% 0, 0 0;
+  }
+  100% {
+      background-position: 0 0, 120% 120;
+  }
+} */
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.btn {
+  display: inline-block;
+  color: #FFDE56;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid #ccc;
+  font-family: inherit;
+  background-color: #080808;
+}
+.btn:hover {
+  background-color: #181818d3;
+  border: 2px solid;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-icon {
+  background-color: rgba(5, 5, 5, .7);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+
+/* Firefox */
+/* * {
+  scrollbar-width: auto;
+  scrollbar-color: #8f54a0 #ffffff;
+} */
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: tomato;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}

@@ -1,0 +1,14 @@
+<div class="ranker" title="See {{ name }} Profile" (click)="goProfile()">
+    <fa-icon *ngIf="" [icon]="icon" ></fa-icon>
+    <img [src]="imageSrc" onerror="this.src='./assets/trace.svg'" width="50px" height="50px">
+    <div class="info">
+        <div class="col" id="col1">
+            <h3> {{ name }} </h3>
+            <h3> {{ rank }} </h3>
+        </div>
+        <div class="col" id="col2">
+            <h3 [ngStyle]="{'color': '#46C34B'}"> {{ win }} </h3>
+            <h3 [ngStyle]="{'color': '#D75050'}"> {{ lost }} </h3>
+        </div>
+    </div>
+</div>

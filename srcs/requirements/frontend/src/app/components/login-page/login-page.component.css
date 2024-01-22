@@ -1,0 +1,52 @@
+.connect {
+	padding: 5px 10px;
+	background-color: rgb(0, 116, 48);
+	border: none;
+	font-size: x-large;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 0;
+}
+
+.login {
+	margin: 80px auto;
+	width: 400px;
+	height: 50%;
+	border-radius: 15px;
+	border-top: 2px solid #635623;
+	border-left: 2px solid #635623;
+	background: rgba(11, 11, 16, .8);
+	overflow: hidden;
+	padding: 15px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+h1 {
+	border-bottom: 1px solid;
+	padding: 10px;
+	padding-left: 15px;
+}
+
+#password, #email, #name {
+	border-top: 0;
+	border-left: 0;
+	border-color: #635623;
+	border-radius: 10px;
+	background: #050505;
+}
+
+main {
+	margin: 80px auto;
+	width: 400px;
+}
+
+#log {
+	size: 10px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+/* #register {
+	border-bottom: solid 2px;
+} */

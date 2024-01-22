@@ -1,0 +1,11 @@
+<main>
+    <form (ngSubmit)="onSubmit()" class="login" >
+        <h1>Login</h1>
+        <div class="form-control">
+            <label for="name">2Fa Auth</label>
+            <input type="text" [(ngModel)]="code" name="twofa" id="twofa" placeholder="2Fa">
+        </div>
+        <input type="submit" class="btn btn-block" value="Confirm">
+        <button class="btn Cancel" (click)="cancelTwoFaLog()" >Cancel</button>
+    </form>
+</main>

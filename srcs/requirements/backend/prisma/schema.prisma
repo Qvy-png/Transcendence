@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id                Int     @default(autoincrement()) @id
+  email             String  @unique
+  password          String
+  name              String?
+  img               String?
+  status            String?
+  games             Int?
+  wins              Int?
+  looses            Int?
+  rank              Int?
+  twoFactor         Boolean?
+  twoFactorSecret   String?    // Nouvelle colonne pour la clé secrète 2FA
+  historicGameID    Historic[]
+  friendList        Int[]
+  pendingRequest    Int[]
+
+  //ajout de data pour le chat 
+  conversationList Int[]
+  blockedUsers     Int[]
+
+}
+
+model Historic {
+  gameId          Int      @default(autoincrement()) @id
+  userId          Int // relation scalar field  (used in the `@relation` attribute above)
+  opponentName    String?
+  winner          String?
+  scorePlayerOne  Int?
+  scorePlayerTwo  Int?
+  date            String?
+  mode            String?
+  user            User?    @relation(fields: [userId], references: [id])
+}
+
+model Conversation {
+  convId       Int        @id @default(autoincrement())
+  convType     String
+  convName     String
+  ownerId      Int
+  adminList    Int[]
+  password     String?
+  imgURL       String
+  participants Int[]
+  bannedUsers  Int[]
+}
+
+// model Post {
+//   id        Int      @default(autoincrement()) @id
+//   title     String
+//   content   String?
+//   published Boolean? @default(false)
+//   user    User?    @relation(fields: [userId], references: [id])
+//   // user    User?    @relation(fields: [userIdTwo], references: [id])
+
+//   userId  Int?
+// }

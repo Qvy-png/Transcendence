@@ -1,0 +1,16 @@
+<div class="historic" [ngStyle]="{'background-color': color, 'height': size}" (click)="toggleHisDetails()" >
+        <h2> {{ curUser }} </h2>
+        <div class="score">
+            <span> {{ curUserScore }} </span>
+            <span>|</span>
+            <span> {{ oppUserScore }} </span>
+        </div>
+        <h2 class="opp" title="See {{ oppUser }} Profile" (click)="goProfile()"> {{ oppUser }} </h2>
+
+    <div class="second-line" *ngIf="showDetails" >
+        <span>Id[{{ gameId }}]</span>
+        <span id="date"> {{ date }} </span>
+        <span><{{ mode }}></span>
+    </div>
+
+</div>

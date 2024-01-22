@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div *ngIf="!twoFa; else disable2FA">
+    <form class="setup" (ngSubmit)="verify2Fa()" >
+        <h2>Setup 2FA</h2>
+        
+        <span>Scan the QR Code or enter the secret key in Google Authenticator</span>
+        
+        <div class="qr">
+            <img src="{{qrUrl}}">
+        </div>
+        
+        <span>  Secret Key:</span>
+        <span id="key">{{secret}}</span>
+        
+        <input type="text" class="form-control" [(ngModel)]="code" name="value" placeholder="Auth Code">
+        
+        <input type="submit" [ngStyle]="{'background-color': '#028A0F'}" value="Enable 2FA" class="btn btn-block" >
+    </form>
+</div>
+
+<ng-template #disable2FA>
+    <form class="setup" (ngSubmit)="disable2Fa()">
+        <h2>Disable 2FA</h2>
+    
+        <span>Enter the key from Google Authenticator to disable</span>
+
+        <input type="text" class="form-control" [(ngModel)]="code" name="value" placeholder="Auth Code">
+        
+        <input type="submit" [ngStyle]="{'background-color': '#'}" value="Disable 2FA" class="btn btn-block" >
+    </form>
+</ng-template>

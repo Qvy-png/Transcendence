@@ -1,0 +1,84 @@
+<app-header [room]="room"></app-header>
+<main>
+  <h1 *ngIf="!Queuejoingned">Play</h1>
+  <div class="menu" *ngIf="!Queuejoingned; else loadingQueueTemplate">
+    <div class="room-section">
+      <div class="room-btn">
+        <input type="text" [(ngModel)]="roomToJoin" placeholder="Room Number">
+        <button class="btn btn-play join" (click)="limitedClick()" (click)="joinRoom()">Join</button>
+      </div>
+
+      <!-- Salle -->
+      <div class="room" *ngIf="roomjoingned || roomCreated">
+        <!-- Informations de la salle -->
+        <div class="room-info">
+          <h2 id="room-name">[{{ room }}]</h2>
+          <ul>
+            <li *ngFor="let user of users">{{ user }}</li>
+          </ul>
+        </div>
+    
+        <!-- Bouton pour démarrer la partie  -->
+        <button class="btn btn-play" *ngIf="users.length >= 2 && roomCreated" (click)="startGame()">Start Game</button><br>
+
+        <!-- Dropdown for game modes -->
+        <label *ngIf="roomCreated" for="selectedGameMode">Choose a game mode:</label>
+        <select *ngIf="roomCreated" [(ngModel)]="selectedGameMode">
+          <option value="deathmatch">Death Match</option>
+          <option value="regular">Regular</option>
+          <option value="winby2">Win by 2 Points Diff</option>
+        </select>
+        <div class="color-selection">
+          <label for="colorChoice">Choose a color:</label>
+          <select id="colorChoice" [(ngModel)]="selectedColor">
+            <option value="#ffde56">Yellow</option>
+            <option value="#f0eada">White</option>
+            <option value="#e68722">Orange</option>
+          </select>
+        </div>
+        <button class="btn btn-play" *ngIf="roomjoingned || roomCreated" (click)="leaveRoom()">Leave Room</button>
+      </div>
+
+    </div>
+    
+    <!-- -------------------------------- -->
+    <div class="button-section">
+      <!-- <div class="friendlist">
+        <app-friend-item 
+        class="item"
+        *ngFor="let friend of friendlist" [id]="friend"
+        (revokeFriend)="revokeFriend($event)"
+        >
+
+        </app-friend-item>
+      </div>  -->
+      <div class="action-buttons">
+        <button class="btn btn-play" (click)="createRoom()">Create a room</button>
+        <button class="btn btn-play" (click)="limitedClick()" (click)="joinQueue()">Join Queue</button>
+      </div>
+    </div>
+
+    <!-- Affichage du message lors de la recherche d'une partie -->
+  </div>
+  <ng-template  #loadingQueueTemplate>
+    <div class="searching-for-game">
+      <h1>Searching Match<span class="loading-dots"></span></h1><br>
+      <div class="color-selection">
+        <label for="colorChoice">Choose a color:</label>
+        <select id="colorChoice" [(ngModel)]="selectedColor">
+          <option value="#ffde56">Yellow</option>
+          <option value="#f0eada">White</option>
+          <option value="#e68722">Orange</option>
+        </select>
+      </div>
+      <button class="btn cancel" (click)="leaveQueue()">Cancel</button>
+    </div>
+  </ng-template>
+</main>
+<!-- <div class="menu">
+
+
+
+
+   Affichage lorsqu'un utilisateur est en file d'attente 
+</div> -->

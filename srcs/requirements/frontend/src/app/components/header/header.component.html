@@ -1,0 +1,36 @@
+<header>
+	<ng-container [ngSwitch]="whichRoute()">
+		<!-- Main Menu -->
+		<ng-template ngSwitchCase="1">
+			<app-button-profile class="button-profile"></app-button-profile>
+		</ng-template>
+		<!-- Profile -->
+		<ng-template ngSwitchCase="2">
+				<button *ngIf="curUserProfile" text="Disconnect" class="btn" (click)="disconnect()" > DISCONNECT </button>
+				<app-button routerLink="/" text="<- PROFILE" id="Profile"></app-button>
+		</ng-template>
+		<!-- Friends -->
+		<ng-template ngSwitchCase="3">
+			<app-button-profile class="button-profile"></app-button-profile>
+			<app-button routerLink="/" text="<- FRIENDS" id="Friends" ></app-button>
+		</ng-template>
+		<!-- Settings -->
+		<ng-template ngSwitchCase="4">
+			<app-button-profile class="button-profile"></app-button-profile>
+			<app-button routerLink="/" text="<- SETTINGS" id="Settings" ></app-button>
+		</ng-template>
+		<!-- Game -->
+		<ng-template ngSwitchCase="5">
+			<app-button-profile></app-button-profile>
+			<app-button routerLink="/" text="<- GAME MENU" id="Game" (click)="onQuit()"></app-button>
+		</ng-template>
+		<ng-template ngSwitchCase="7">
+			<app-button routerLink="/" text="<- GAME" id="Game" ></app-button>
+		</ng-template>
+		<!-- Leaderboard -->
+		<ng-template ngSwitchCase="6">
+			<app-button-profile></app-button-profile>
+			<app-button routerLink="/" text="<- LEADERBOARD" id="Leaderboard" ></app-button>
+		</ng-template>
+	</ng-container>
+</header>

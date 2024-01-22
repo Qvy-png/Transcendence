@@ -1,0 +1,86 @@
+<app-header [whosId]="id"></app-header>
+<body>
+	<aside>
+		<div class="icon">
+			<!-- <h2> Icon </h2> -->
+			<img [src]="imageSrc"  onerror="this.src='./assets/trace.svg'" width="256" height="256">
+		</div>
+
+		<div *ngIf="curUserProfile; else viewNameTemplate">
+			<div class="name" *ngIf="!changingName; else inputChange">
+				<h2> {{name}} </h2>
+				<button class="btn pen btn-icon" (click)="changingName = true">
+					<fa-icon [icon]="faPen" ></fa-icon>
+				</button>
+			</div>
+		</div>
+		
+		<ng-template #viewNameTemplate>
+			<div class="name">
+				<h2> {{name}} </h2>
+			</div>
+		</ng-template>
+
+		<ng-template  #inputChange>
+			<div class="name">
+				<button class="btn disk" (click)="changingName = false">
+					<fa-icon [icon]="faCross" ></fa-icon>
+				</button>
+				<input type="text" [(ngModel)]="newName">
+				<button class="btn disk" (click)="changeName()">
+					<fa-icon [icon]="faDisk"></fa-icon>
+				</button>
+			</div>
+		</ng-template>
+		
+		<div *ngIf="curUserProfile; else viewStatusTemplate">
+			<div class="cur-status" (click)="changeStatus()" >
+				<!-- Display current status -->
+				<span class="dot" [ngStyle]="{'background-color': color}"></span>
+				<span> {{ status ? status : 'ONLINE' }}</span> <!-- Status est indefinie a la creation -->
+			</div>
+		</div>
+
+		<ng-template #viewStatusTemplate>
+			<div class="cur-status" [ngStyle]="{'cursor': 'auto'}" >
+				<!-- Display current status -->
+				<span class="dot" [ngStyle]="{'background-color': color}"></span>
+				<span> {{ status ? status : 'ONLINE' }}</span> <!-- Status est indefinie a la creation -->
+			</div>
+		</ng-template>
+
+	</aside>
+
+	<!-- -------------------------------- -->
+
+	<main>
+		<div class="grade">
+			<h2> {{ getGames() }} {{ (getGames() > 1? 'Games' : 'Game') }} Played</h2>
+			<div class="score">
+				<div class="row">
+					<div class="col col-heading">
+						<h1>Win</h1>
+					</div>
+					<div class="col col-display"> {{ getWins() }} </div>		
+				</div>
+				<div class="row">
+					<div class="col col-heading">
+						<h1>Lost</h1>
+					</div>
+					<div class="col col-display"> {{ getLooses() }} </div>
+					
+				</div>
+			</div>
+			<h2>Rank: {{ getRank() }}</h2>
+		  </div>
+
+		<!-- -------------------------------- -->
+
+		<section class="history">
+			<h2 id="his" >History</h2>
+			<app-historic-item *ngFor="let historic of histories" [game]="historic" >
+
+			</app-historic-item>
+		</section>
+	</main>
+</body>

@@ -1,0 +1,20 @@
+    <div class="friend" [ngStyle]="{'height': size}"  >
+    <div class="first-line" (click)="onToggleAction()">
+        <img [src]="imageSrc" onerror="this.src='./assets/trace.svg'" width="40px" height="40px">
+        <h3> {{ name }} </h3>
+        
+        <span class="dot" [ngStyle]="{'background-color': color}" >
+            <div *ngIf="game">
+                <fa-icon [icon]="faPad" class="icon"></fa-icon>
+            </div>
+        </span>
+    </div>
+    
+    <div class="second-line" *ngIf="showDetails" >
+        <fa-icon [icon]="faBlock" class="icon" title="Block" *ngIf="!isPlayMenu" (click)="Block()"></fa-icon>
+        <fa-icon [icon]="faRevok" class="icon" title="Unfriend" (click)="Revoke()"></fa-icon>
+        <fa-icon [icon]="faProfile" class="icon" title="See {{ name }} Profile" (click)="goProfile()"></fa-icon>
+        <fa-icon [icon]="faTalk" title="Start Chat" class="icon" (click)="Chat()" ></fa-icon>
+    </div>
+
+</div>

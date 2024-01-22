@@ -1,0 +1,30 @@
+<div class="group" [ngStyle]="{'height': size, 'background-color': color}">
+    <div class="first-line" (click)="onToggleAction()">
+        <h3> {{ name }} </h3>
+        <fa-icon *ngIf="!this.isIn && type == 'protected'" [icon]="faLock" class="icon" title="Locked"></fa-icon>
+        <fa-icon *ngIf="this.isIn && type == 'private'" [icon]="faPriv" class="icon" title="Private"></fa-icon>
+    </div>
+    
+    <div class="second-line" *ngIf="showDetails">
+        <div *ngIf="!this.isIn; else IsInTemplate">
+            <div *ngIf="type == 'protected'; else UnlockJoinTemplate">
+                <input type="password" class="pass" [(ngModel)]="pass" >
+                <button type="submit" (click)="join()">
+                    <fa-icon *ngIf="!isIn" [icon]="faJoin" class="icon" title="Join"></fa-icon>
+                </button>
+            </div>
+
+            <ng-template #UnlockJoinTemplate>
+                <button type="submit" (click)="join()">
+                    <fa-icon *ngIf="!isIn" [icon]="faJoin" class="icon" title="Join"></fa-icon>
+                </button>
+            </ng-template>
+        </div>
+
+        <ng-template class="third-line" #IsInTemplate>
+            <fa-icon *ngIf="isIn" [icon]="faRevok" class="icon" title="Leave" (click)="Leave()"></fa-icon>
+            <fa-icon *ngIf="isIn" [icon]="faTalk" class="icon" title="Open Chat" (click)="Open()"></fa-icon>
+        </ng-template>
+    </div>
+
+</div>

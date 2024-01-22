@@ -1,0 +1,12 @@
+<app-header></app-header>
+<main>
+  <h1>Leaderboard</h1>
+  <div class="leaderboard-container">
+    <fa-icon class="icon" [icon]="faCrown" ></fa-icon>
+    <div>
+      <ul>
+        <app-ranker-item class="item" *ngFor="let ranker of rankers" [user]="ranker" ></app-ranker-item>
+      </ul>
+    </div>
+  </div>
+</main>

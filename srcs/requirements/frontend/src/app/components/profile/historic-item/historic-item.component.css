@@ -1,0 +1,37 @@
+.historic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: auto;
+    flex-wrap: wrap;
+    padding: 5px 10px;
+    margin: 5px auto;
+    width: 530px;
+    border: 0;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.second-line {
+    width: 540px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+
+}
+
+.opp:hover {
+    color: #FFDE56;
+    /* background: rgba(0, 0, 0, .8); */
+}
+
+h2 {
+    color: black;
+}
+
+span {
+    color: black;
+}

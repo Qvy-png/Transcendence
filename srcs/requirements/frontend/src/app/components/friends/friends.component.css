@@ -1,0 +1,351 @@
+.friends-menu {
+    background: rgba(0, 0, 0, .9);
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    padding: 15px;
+    /* max-width: 80%; */
+    width: 55%;
+    border: solid 2px;
+    border-radius: 30px;
+       
+}
+
+.item {
+    width: 90%;
+    min-width: 90%;
+    margin: 5px auto;
+}
+
+.request {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: space-between;
+    overflow: auto;
+    padding: 10px 0;
+    width: 50%;
+    /* border: solid 1px green; */
+}
+
+.friendlist {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    padding: 10px 0;
+    width: 50%;
+    /* border: solid 1px blue; */
+}
+
+.list, .blks {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: space-between;
+    margin: 10px 0;
+    overflow: auto;
+    border-left: dashed 2px #FFDE56;
+    height: 80%;
+    width: 100%;
+}
+
+.reqs, .grps {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: space-between;
+    margin: 10px 0;
+    overflow: auto;
+    height: 80%;
+    width: 100%;
+}
+
+.send-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 85%;
+    height: 30px;
+    margin:0;
+    padding:0;
+    
+    border: solid 2px #FFDE56;
+    border-radius: 25px;
+    background-color: #080808;
+
+
+}
+
+input {
+    background-color: transparent;
+    width: 85%;
+    line-height: 1;
+    border: 0;
+    margin:0;
+    padding:0;
+    color: #f94f6d;
+    font-size: 80%;
+    
+}
+input::placeholder {
+    font-size: 80%;
+    color: #ccc;
+    opacity: .8;
+}
+
+
+button[type="submit"] {
+    /* background-color: brown; */
+    width: 11%;
+    /* padding: 1%; */
+    margin:0;
+    /* border-radius: 45%; */
+}
+
+.grp-creation {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    align-items: center;
+
+
+    background-color: #080808;
+    border-radius: 15px;
+
+    padding: 2% 1%;
+    margin: 0;
+
+    #grp-name {
+        height: 30px;
+        width: 85%;
+        background-color: #080808;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding-left: 5px;
+    }
+
+    #grp-type {
+        width: 85%;
+        height: 35px;
+        background-color: black;
+        color: #FEDE68;
+        border: 1px solid #FEDE68;
+        border-radius: 10px;
+        padding: 5px 10px;
+    }
+
+    #grp-pass {
+        height: 30px;
+        width: 85%;
+        background-color: #080808;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding-left: 5px;
+    }
+
+    #grp-btn {
+        height: 40px;
+        cursor: pointer;
+        /* border: solid 2px #FFDE56; */
+        border-radius: 25px;
+        background: rgba(5, 5, 5, .7);
+    }
+
+    #grp-btn:hover {
+        background: rgba(5, 5, 5, .4);
+    }
+
+    #grp-pass::placeholder, #grp-type::placeholder {
+        padding-left: 8px;
+    }
+}
+
+.grp {
+    /* border: 1px solid blue; */
+    background-color: #FFDE56;
+    color: rgba(0, 0, 0, .8);
+}
+
+
+.search {
+    display: flex;
+    justify-content: center;
+    height:500px;
+    width: 25%;
+    border: solid 2px;
+    border-radius: 30px;
+}
+
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto 5%;
+	/* border: solid 2px; */
+	/* height: 100vh; */
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    
+}
+
+.nav-icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 11px;
+    color: rgba(0, 0, 0, .8);
+    border: 2px solid #FFDE56;
+    height: 35px;
+    width: 35px;
+}
+
+.nav-icon:hover {
+    background-color: #FFFFFF25;
+}
+
+/*  */
+
+
+.chat-container {
+    height: 500px;
+    width: 35%;
+    background: rgba(0, 0, 0, .87);
+    border: solid 2px;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.chat-empty {
+    border: 2px solid #E3DAC9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+    background: rgba(04, 04, 06, .97);
+    
+    #empty-title {
+        font-size: xx-large;
+
+    }
+}
+
+.chat-message{
+    display: flex;
+    height: 80%;
+    width:100%;
+    margin-top: 15px;
+    /* border-radius: 10px;  */
+    overflow-x: auto;
+
+}
+
+.chat-name {
+    width: fit-content;
+    height: fit-content;
+    font-size: large;
+}
+
+.chat-action {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 13%;
+    background-color: #080808;
+    border-radius: 15px;
+
+    #chat-input {
+        background-color: #080808;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        height: 100%;
+        outline: none;
+        width: inherit;
+        line-height: 1;
+        font-size: 85%;
+        padding: 0;
+        margin: 0;
+        padding-left: 10px;
+    }
+
+    #chat-input::placeholder {
+        font-size: 85%;
+        padding-left: 5px;
+    }
+
+    #chat-button {
+        height: 100%;
+        cursor: pointer;
+        /* border: solid 2px #FFDE56; */
+        border-radius: 25px;
+        background: rgba(5, 5, 5, .7);
+    }
+    #chat-button:hover {
+        background: rgba(5, 5, 5, .4);
+    }
+}
+
+
+.chat-item {
+    /* border: 1px solid red; */
+    width: inherit;
+    background: rgba(0, 0, 0, .55);
+}
+
+
+/* a voir si encore utile */
+.conversation {
+    width: 300px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    overflow-y: scroll; /* Enable vertical scrolling if needed */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+  
+  .message {
+      margin-bottom: 10px;
+      clear: both;
+    }
+  
+  .sender {
+      float: left;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      padding: 5px;
+      margin-right: 10px;
+    }
+    
+    .receiver {
+        float: right;
+        background-color: #acaf4c;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+    
+
+    
+
+    /*  */

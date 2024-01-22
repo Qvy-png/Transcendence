@@ -1,0 +1,61 @@
+.request {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: auto;
+    /* margin: 5px auto; */
+    height: 45px;
+
+    border: 0;
+    border-radius: 25px;
+    background-color: #FEDE56;
+
+}
+
+img {
+    background-color: black;
+    margin: auto 15px;
+    border-radius: 50%;
+}
+
+h3 {
+    color: black;
+}
+
+.but {
+    /* border: solid 1px black; */
+    display: flex;
+    /* width: 25%; */
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto 10px;
+}
+
+button {
+    display: block;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    border-radius: 100%;
+}
+
+#accept {
+    background-color: #46C34B;
+    margin-right: 2px;
+}
+
+#accept:hover {
+    background-color: #028A0F;
+}
+
+#refuse {
+    background-color: #D75050;
+    margin-left: 2px;
+}
+
+#refuse:hover {
+    background-color: #900D09;
+}

@@ -1,0 +1,11 @@
+<div class="block" [ngStyle]="{'height': size}"  >
+    <div class="first-line" (click)="onToggleAction()">
+        <img [src]="imageSrc" onerror="this.src='./assets/trace.svg'" width="40px" height="40px">
+        <h3> {{ name }} </h3>
+    </div>
+    
+    <div class="second-line" *ngIf="showDetails" >
+        <fa-icon [icon]="faUnblock" class="icon" title="Unblock" (click)="unblockUser()"></fa-icon>
+    </div>
+
+</div>

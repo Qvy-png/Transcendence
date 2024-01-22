@@ -1,0 +1,50 @@
+.setup {
+    display: flex;
+    flex-direction: column;
+	margin: 80px auto;
+    gap: .7rem;
+	width: 500px;
+	height: 150%;
+	border-radius: 15px;
+	border-top: 2px solid #635623;
+	border-left: 2px solid #635623;
+	background: #FFFFFF10;
+	/* overflow:auto; */
+	backdrop-filter: blur(4px);
+	padding: 15px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+input[type="text"] {
+    color: #f94f6d;
+    background-color: #080808;
+    padding-left: 5%;
+
+    height: 35px;
+    border-radius: 25px;
+}
+input[type="text"]::placeholder {
+    font-size: 80%;
+    color: #ccc;
+    opacity: .8;
+}
+
+span {
+    font-size: large;
+}
+
+.qr {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+	border-bottom: 1px solid grey;
+	padding: 10px;
+	padding-left: 15px;
+}
+
+#key {
+    font-size: small;
+}

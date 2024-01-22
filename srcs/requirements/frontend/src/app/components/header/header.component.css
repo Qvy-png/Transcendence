@@ -1,0 +1,33 @@
+* {
+	overflow: hidden;
+}
+
+header {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	/* border: solid 1px; */
+	padding: 20px;
+	align-content: center;
+
+}
+.btn {
+	height: 4em;
+	border-radius: 35px;
+}
+
+#Friends, #Game, #Profile {
+	height: 100px;
+	margin-top: 5%;
+	padding-left: 5%;
+	font-size: xx-large;
+}
+
+#Game {
+	margin-top: 2%;
+}
+
+/* .profile {
+	display: flex;
+	flex-direction: row-reverse;
+} */

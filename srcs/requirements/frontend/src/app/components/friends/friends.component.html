@@ -1,0 +1,138 @@
+<app-header></app-header>
+
+<main>
+    <section class="friends-menu">
+        <nav>
+            <fa-icon [icon]="faRequest" class="nav-icon" title="Requests" (click)="showRequests()" ></fa-icon>
+            <fa-icon [icon]="faGroup" class="nav-icon" title="Grouplist" (click)="showGroups()"  ></fa-icon>
+            <fa-icon [icon]="faFriends" class="nav-icon" title="Friendlist" (click)="showFriends()" ></fa-icon>
+            <fa-icon [icon]="faBlocked" class="nav-icon" title="Blocklist" (click)="showBlocks()" ></fa-icon>
+        </nav>
+        <div class="request" *ngIf="reqsList; else GroupListTemplate">
+            <h2>REQUESTS</h2>
+
+            <div class="reqs">
+                <app-request-item
+                class="item"
+                *ngFor="let req of reqs" [id]="req"
+                (deleteRequest)="deleteReq($event)">
+    
+                </app-request-item>
+            </div>
+
+            <div class="send">
+                <input type="text" [(ngModel)]="name" value="name" placeholder="INSERT NAME">
+                <button class="send-button" type="submit" (click)="sendRequest()">
+                    <fa-icon [icon]="faGlass"></fa-icon>
+                </button>
+            </div>
+        </div>
+
+        <ng-template #GroupListTemplate>
+            <div class="request">
+                <h2>GROUPS</h2>
+    
+                <div class="grps">
+                    <app-group-item
+                    class="item"
+                    *ngFor="let group of storeConv" [group]="group"
+                    (joinConv)="joinConv($event)"
+                    [currentUser]="uid"
+                    (leaveConv)="leaveConv($event)"
+                    (startChatGroup)="startChatGroup($event)"
+                    (sendConvSearch)="sendConvSearch()">        
+                    </app-group-item>
+                    
+                </div>
+                <div class="grp-creation">
+                    <input type="text" maxlength=10 id="grp-name" [(ngModel)]="convInput" placeholder="Group Name">
+                    <select id="grp-type" [(ngModel)]="convType">
+                        <option value="public">Public</option>
+                        <option value="protected">Protected</option>
+                        <option value="private">Private</option>
+                    </select>
+                    <input type="text" id="grp-pass" maxlength=10 *ngIf="convType == 'protected'" [(ngModel)]="protectedPassword" placeholder="Password">
+                    <button type="button" id="grp-btn" (click)="createConv() ">Create Group</button>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="friendlist" *ngIf="frdsList; else BlockListTemplate">
+            <h2>FRIENDS</h2>
+
+            <div class="list">
+                <app-friend-item
+                class="item"
+                *ngFor="let friend of friends" [id]="friend"
+                (blockFriend)="blockFriend($event)"
+                (revokeFriend)="revokeFriend($event)"
+                (chatFriend)="startChatFriend($event)">
+                 
+                </app-friend-item>
+            </div>
+            <div class="create">
+                
+            </div>
+        </div>
+
+        <ng-template #BlockListTemplate>
+            <div class="friendlist">
+                <h2>BLOCKED</h2>
+    
+                <div class="blks">
+                    <app-block-item
+                    class="item"
+                    *ngFor="let block of blocked" [id]="block"
+                    (unblock)="unBlockTarget($event)">
+
+                    </app-block-item>
+                </div>
+
+                <div class="send">
+                    <input type="text" [(ngModel)]="block" value="name" placeholder="INSERT NAME TO BLOCK">
+                    <button class="send-button" type="submit" (click)="blockUser()" >
+                        <fa-icon [icon]="faGlass"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+
+    </section>
+
+    <!-- -------------------------------- -->
+
+    <aside class="chat-container" *ngIf="onChat; else NoChatTemplate" [ngStyle]="{'background-color': (panelStyle) ? '#00040D' : ''}">
+        <app-chat-item
+            [isGroupChat]="isGroupChat"
+            [messages]="convMessageTab"
+            [curId]="curId"
+            [curBlockList]="blocked"
+            [id]="uid"
+            [name]="convName"
+            [selectedConvId]="convWithAct"
+            [privMessages]="messageTab"
+            [currentFriend]="idInput"
+            [Group]="selectedGroup"
+            (sendMessage)="sendMessage($event)"
+            (sendInvite)="sendInvite($event)"
+            (sendBan)="sendBan($event)"
+            (sendUnban)="sendUnban($event)"
+            (sendPromote)="sendPromote($event)"
+            (sendDemote)="sendDemote($event)"
+            (sendKick)="sendKick($event)"
+            (sendMute)="sendMute($event)"
+            (sendChangeConvType)="sendChangeConvType($event)"
+            (panelStyle)="panelStyle = $event">
+            
+        </app-chat-item>
+    </aside>
+    <!-- -------------------------------- -->
+
+    <!-- <button (click)="sendChangeConvType()">Heyo test man</button> -->
+    <ng-template #NoChatTemplate>
+        <aside class="chat-container chat-empty">
+            <h1 id="empty-title">Start Chat</h1>
+        </aside>
+    </ng-template>
+    
+</main>

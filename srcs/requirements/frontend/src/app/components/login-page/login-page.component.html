@@ -1,0 +1,48 @@
+<app-header></app-header>
+<!-- <button (click)="deleteCookies()">Delete</button> <br> -->
+
+
+<main>
+	<a [href]="link" id="myLink">
+		<button class="connect btn">
+			Sign in with
+			<img src="assets/42_Logo.svg">
+		</button>
+	</a>
+	
+	<div *ngIf="!signUp; else signUpTemplate">
+		<form (ngSubmit)="onSubmit()" class="login" >
+			<h1>Login</h1>
+			<div class="form-control">
+				<label for="email" >Email</label>
+				<input type="text" [(ngModel)]="email" name="email" id="email" placeholder="xxx@xxx.com">
+			</div>
+			<div class="form-control">
+				<label for="password" >Password</label>
+				<input type="password" [(ngModel)]="password" name="password" id="password" placeholder="Password">
+			</div>
+			<input type="submit" value="Login" class="btn btn-block">
+		</form>
+		<app-button text="Sign Up" id="log" (btnClick)="showSignUp()" ></app-button>
+	</div>
+</main>
+
+<ng-template #signUpTemplate>
+	<form (ngSubmit)="register()" class="login" >
+		<h1>Sign Up</h1>
+		<div class="form-control">
+			<label for="name">Name</label>
+			<input type="text" [(ngModel)]="name" name="name" id="name" placeholder="Username">
+		</div>
+		<div class="form-control">
+			<label for="email" >Email</label>
+			<input type="text" [(ngModel)]="email" name="email" id="email" placeholder="xxx@xxx.com">
+		</div>
+		<div class="form-control">
+			<label for="password">Password</label>
+			<input type="password" [(ngModel)]="password" name="password" id="password" placeholder="Password">
+		</div>
+		<input type="submit" value="Sign Up" class="btn btn-block">
+	</form>
+	<app-button text="Sign In" id="log" (btnClick)="showSignIn()"></app-button>
+</ng-template>

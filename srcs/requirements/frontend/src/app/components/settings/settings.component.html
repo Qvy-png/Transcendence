@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="menu">
+    <input type="file" style="display: none" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+    
+    <app-button text="Change Avatar" (click)="changingAvatar = true" *ngIf="!changingAvatar; else upload"></app-button>
+    
+    <ng-template #upload>
+    
+        <div class="file-upload">
+            {{ fileName || "No Image Selected" }}
+            
+            <button class="btn" (click)="fileUpload.click()" >
+                <fa-icon [icon]="faClip"></fa-icon>
+            </button>
+        </div>
+    </ng-template>
+        
+    <div class="2fa">
+        <app-button class="2fa"
+            text="{{(!twoFa) ? 'Enable 2FA' : 'Disable 2FA'}}"
+            color=" {{ color }}"
+            (click)="set2Fa()" >
+    
+        </app-button>
+    </div>
+</div>

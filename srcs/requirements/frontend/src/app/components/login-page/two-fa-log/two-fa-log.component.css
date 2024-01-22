@@ -1,0 +1,36 @@
+main {
+	border: 1px solid transparent;
+    /* width: 400px; */
+    height: 100vh;
+	/* margin: 80px auto; */
+}
+
+.login {
+	margin: 80px auto;
+	width: 400px;
+	height: max-content;
+	border-radius: 15px;
+	border: 2px solid #635623;
+	/* border-left: 2px solid #635623; */
+	background: rgba(08, 08, 08, .9);
+	padding: 15px;
+}
+
+#twofa {
+	border-top: 0;
+	border-left: 0;
+	border-color: #635623;
+	border-radius: 10px;
+	background: #050505;
+}
+
+h1 {
+    border-bottom: 1px solid;
+    padding: 10px;
+    padding-left: 15px;
+}
+
+.Cancel {
+    background: rgba(04, 04, 06, .96);
+    border: 2px solid #FEDE68;
+}

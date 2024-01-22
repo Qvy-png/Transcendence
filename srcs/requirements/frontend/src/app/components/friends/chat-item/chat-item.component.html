@@ -1,0 +1,158 @@
+<aside class="chat-container" *ngIf="!ctrlPanel; else AdminPanel">
+  <div class="chat-top-panel" [ngStyle]="{'justify-content': (currentFriend != -1) ? 'center' : 'none'}">
+      <fa-icon [icon]="faPanel" class="nav-icon" id="panel" *ngIf="currentFriend == -1 && isAdminId(curId)" title="Control Panel" (click)="onPanel()" ></fa-icon>
+    <h2 id="chat-name" > {{ this.name }} </h2>
+  </div>
+  <div class="chat-message">
+    <div class="chat-item">
+      <div *ngFor="let message of messages">
+        <ng-container *ngIf="message.convId === selectedConvId">
+          <span id="send" [ngClass]="{'sender': message.senderId === id, 'receiver': message.senderId !== id}">
+            {{ message.senderName }}:<br/>
+
+            <ng-container *ngIf="message.content.startsWith('/invite'); else noButtonGroup">
+
+              <ng-container *ngIf="message.senderId === id">
+                <ng-container *ngIf="checkContent(message.content); else defaultCreateGroupe">
+                  <button class="invite" (click)="handleCreateClick(message.content)"><span id="join">Create</span> {{ message.content.split(' ')[1] }}</button>
+                </ng-container>
+                <ng-template #defaultCreateGroupe>
+                  [INVITE ERROR]
+                </ng-template>
+              </ng-container>
+  
+              <ng-container *ngIf="message.senderId !== id">
+                <ng-container *ngIf="checkContent(message.content); else defaultJoinGroup">
+                  <button class="invite" (click)="handleInviteClick(message.content)"><span id="join">Join</span> {{ message.content.split(' ')[1] }}</button>
+                </ng-container>
+                <ng-template #defaultJoinGroup>
+                  [INVITE ERROR]
+                </ng-template>
+              </ng-container>
+            </ng-container>
+
+            <ng-template #noButtonGroup>
+              <ng-container *ngIf="curBlockList.indexOf(message.senderId) == -1; else BlockMsgTemplate">
+                {{ message.content }}
+              </ng-container>
+              <ng-template #BlockMsgTemplate>
+                [BLOCKED USER]
+              </ng-template>
+            </ng-template>
+          </span>
+        </ng-container>
+      </div>
+      <div *ngFor="let priv of privMessages">
+        <ng-container *ngIf="(priv.senderId === currentFriend && priv.recipientId === id) || (priv.senderId === id && priv.recipientId === currentFriend)">
+          <span id="send" [ngClass]="{'sender': priv.senderId === id, 'receiver': priv.senderId !== id}">
+            {{priv.senderName}}: <br/>
+            
+            <ng-container *ngIf="priv.content.startsWith('/invite'); else noButton">
+
+              <ng-container *ngIf="priv.senderId === id">
+                <ng-container *ngIf="checkContent(priv.content); else defaultCreatePrivate">
+                  <button class="invite" (click)="handleCreateClick(priv.content)"> <span id="join">Create</span> [{{priv.content.split(' ')[1]}}]</button>
+               </ng-container>
+                <ng-template #defaultCreatePrivate>
+                  [INVITE ERROR]
+                </ng-template>
+              </ng-container>
+
+              <ng-container *ngIf="priv.senderId !== id">
+                <ng-container *ngIf="checkContent(priv.content); else defaultJoinPrivate">
+                  <button class="invite" (click)="handleInviteClick(priv.content)"> <span id="join">Join</span> [{{priv.content.split(' ')[1]}}]</button>
+                </ng-container>
+                <ng-template #defaultJoinPrivate>
+                  [INVITE ERROR]
+                </ng-template>
+              </ng-container>
+
+            </ng-container>
+            <ng-template #noButton>
+              {{ priv.content }}
+            </ng-template>
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="chat-action">
+      <input id="chat-input" type="text" [(ngModel)]="messageinput" (keyup.enter)="Send()" placeholder="Type your message...">
+      <button id="chat-button" type="submit" (click)="Send()">Send Message</button>
+  </div>
+</aside>
+
+<!--TODO-->
+<ng-template #AdminPanel>
+  <div class="panel-container">
+    <div class="top-panel">
+      <fa-icon [icon]="faPanel" class="nav-icon" id="panel" *ngIf="currentFriend == -1" title="Control Panel" (click)="onPanel()" ></fa-icon>
+      <h2 class="owner-name" id="owner-name">{{ Group.ownerName }} <fa-icon [icon]="faCrown"></fa-icon> </h2>
+    </div>
+    <div class="info-panel">
+      <h2>{{ type }}</h2>
+      <ul>
+        <li class="panel-list" *ngFor="let user of partiNameList" (click)="goProfile(user)" title="See {{ user }} Profile">
+          {{ user }}
+          <fa-icon [icon]="faCrown" *ngIf="user == Group.ownerName"></fa-icon>
+          <fa-icon [icon]="faAdmin" *ngIf="isAdmin(user) && user != Group.ownerName"></fa-icon>
+        </li>
+      </ul>
+    </div>
+    <div class="panel-action">
+      <nav>
+        <fa-icon [icon]="faType" class="nav-icon" title="Change Group Type" (click)="changeAction(0)"></fa-icon>
+        <fa-icon [icon]="faInvite" class="nav-icon"  *ngIf="Group.convType == 'private'" title="Invite" (click)="changeAction(1)"></fa-icon>
+        <fa-icon [icon]="faBan" class="nav-icon" title="Ban" (click)="changeAction(2)"></fa-icon>
+        <fa-icon [icon]="faUnBan" class="nav-icon" title="UnBan" (click)="changeAction(3)"></fa-icon>
+        <fa-icon [icon]="faPromote" class="nav-icon" title="Promote" (click)="changeAction(4)"></fa-icon>
+        <fa-icon [icon]="faDemote" class="nav-icon" title="Demote" (click)="changeAction(5)"></fa-icon>
+        <fa-icon [icon]="faKick" class="nav-icon" title="Kick" (click)="changeAction(6)"></fa-icon>
+        <fa-icon [icon]="faMute" class="nav-icon" title="Mute" (click)="changeAction(7)"></fa-icon>
+      </nav>
+      <div>
+        <div class="panel-action-send" *ngIf="action > 0; else TypeTemplate">
+          <input class="panel-input" type="text" [(ngModel)]="target" placeholder="{{placeholder()}}">
+          <button class="panel-send-button" type="submit" (click)="sendAction()">
+            <fa-icon [icon]="faGlass"></fa-icon>
+          </button>
+        </div>
+        <ng-template #TypeTemplate>
+          <div *ngIf="action == 0">
+            <select class="grp-type" [(ngModel)]="target">
+              <option value="public">Public</option>
+              <option value="protected">Protected</option>
+              <option value="private">Private</option>
+            </select>
+            <input *ngIf="target == 'protected'" class="panel-input" type="text" [(ngModel)]="password" placeholder="Password">
+            <button class="panel-send-button" id="temp" type="submit" (click)="sendAction()">
+              <fa-icon [icon]="faChange"></fa-icon>
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+    <!-- <aside class="">
+        <h1>Admin Pannel</h1>
+        <input type="number" [(ngModel)]="convWithAct" placeholder="convWithAct">
+        <input type="number" [(ngModel)]="userToAct" placeholder="userToAct">
+        <br><br>
+        <button (click)="sendInvite()">Invite conv</button>
+        <br><br>
+        <button (click)="sendBan()">Ban conv</button>
+        <br><br>
+        <button (click)="sendUnban()">Unban conv</button>
+        <br><br>
+        <button (click)="sendPromote()">Promote!</button>
+            <br><br>
+        <button (click)="sendDemote()">Demote!</button>
+        <br><br>
+        <button (click)="sendKick()">Kick!</button>
+        <br><br>
+        <input type="number" [(ngModel)]="minutes" placeholder="muteMinutes">
+            <button (click)="sendMute()">Mute!</button>
+        <button>Does Nothing!</button>
+    </aside> -->

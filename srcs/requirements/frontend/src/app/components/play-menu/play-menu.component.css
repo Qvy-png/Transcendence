@@ -1,0 +1,208 @@
+main {
+	height: 100%;
+	width: 100%;
+}
+
+.menu {
+
+	
+	margin-left: auto;
+	margin-right: auto;
+
+	background: rgba(0, 0, 0, .8);
+	display: flex;
+    flex-direction: row;
+    height: 70vh;
+    padding: 20px 10px;
+    /* max-width: 80%; */
+    width: 55%;
+    border: solid 2px;
+    border-radius: 30px;
+  }
+  
+.room-section {
+	border-right: dashed 2px;
+	/* border: solid 1px blue; */
+	
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: space-between;
+    overflow: auto;
+	width: 70%;
+}
+
+.room-btn {
+	display: flex;
+	flex-direction: row;
+	
+	/* justify-content: space-between; */
+	
+	margin: 0 1%;
+	margin-top: 10px;
+	gap: 8px;
+
+	.join {
+		color: #FEDE68;
+		width: max-content;
+		height:inherit;
+		border-radius: 25px;
+		/* margin: 0; */
+	}
+}
+
+.room {
+	height: 85%;
+	width: 90%;
+	overflow: auto;
+	/* border: 1px solid #ccc; */
+	#room-name {
+		margin-bottom: 5px;
+	}
+}
+
+.room-info {
+	background-color: #080808;
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 25px;
+
+	margin: 2% 0;
+	height: 35%;
+	width: 90%;
+}
+
+input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="text"] {
+  width: 70%;
+  border-radius: 25px;
+  padding: 7px;
+  padding-left: 3%;
+  background-color: #080808;
+  color: #f94f6d;
+}
+
+input[type="text"]::placeholder {
+    color: #ccc;
+    opacity: .75;
+}
+
+h1 {
+	text-align: center;
+	font-weight: 700;
+	font-size: 28px;
+	margin-bottom: 8px;
+}
+
+.button-section {
+	width: 50%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.action-buttons {
+		margin-top: auto;
+		margin-bottom: auto;
+		
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		
+	}
+}
+  
+  .btn-play {
+	padding: 10px;
+	border: 2px solid transparent;
+	background-color: #900D09;
+	color: #FEDE68;
+	cursor: pointer;
+	border-radius: 25px;
+  }
+
+  select {
+	width: 90%;
+    background-color: black;
+    color: #FEDE68; /* You might want to set the text color to something visible against black, like white */
+    border: 2px solid #FEDE68; /* If you want a border around the dropdown */
+    border-radius: 10px; /* If you want rounded corners */
+    padding: 5px 10px;
+}
+
+  .btn-play:hover {
+	background-color: #960018;
+	border: 2px solid;
+  }
+  
+
+
+  @keyframes loadingDots {
+	33% {
+	  content: '.';
+	}
+	66% {
+	  content: '..';
+	}
+	99% {
+	  content: '...';
+	}
+	100% {
+	  content: '';
+	}
+  }
+  
+  .loading-dots:after {
+	content: '';
+	animation: loadingDots 2s infinite;
+	margin-left: 5px;
+  }
+  
+h2 {
+	text-align: center;
+	color: #f94f6d;
+}
+
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+.searching-for-game {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
+	
+	.cancel {
+		width: max-content;
+	}
+}
+
+.friendlist {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	/* align-content: space-between; */
+
+	background: rgba(03, 03, 06, .8);
+	border: 2px solid #FEDE68;
+	border-radius: 35px;
+	width: 90%;
+	height: 200px;
+	overflow: auto;
+	padding: 2% 0;
+}
+
+.item {
+    width: 90%;
+    min-width: 90%;
+	margin: 2px auto;
+}

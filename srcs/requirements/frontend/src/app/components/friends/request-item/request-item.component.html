@@ -1,0 +1,10 @@
+<div class="request" title="See {{ name }} Profile" (click)="goProfile()">
+    <img [src]="imageSrc" onerror="this.src='./assets/trace.svg'" width="40px" height="40px">
+    
+    <h3> {{name}} </h3>
+
+    <div class="but">
+        <button id="accept" title="Accept" (click)="accept()"></button>
+        <button id="refuse" title="Refuse" (click)="refuse()"></button>
+    </div>
+</div>
